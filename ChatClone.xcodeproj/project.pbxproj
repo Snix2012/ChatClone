@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7E45DFAA228304C0009E58C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45DFA9228304C0009E58C7 /* AppDelegate.swift */; };
-		7E45DFAC228304C0009E58C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45DFAB228304C0009E58C7 /* ViewController.swift */; };
 		7E45DFAF228304C0009E58C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E45DFAD228304C0009E58C7 /* Main.storyboard */; };
 		7E45DFB1228304C2009E58C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E45DFB0228304C2009E58C7 /* Assets.xcassets */; };
 		7E45DFB4228304C2009E58C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E45DFB2228304C2009E58C7 /* LaunchScreen.storyboard */; };
 		7E45DFBF228304C2009E58C7 /* ChatCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45DFBE228304C2009E58C7 /* ChatCloneTests.swift */; };
 		7E45DFCA228304C2009E58C7 /* ChatCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45DFC9228304C2009E58C7 /* ChatCloneUITests.swift */; };
+		7E9101B322897E0A00290E7F /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9101B222897E0A00290E7F /* ChatLogViewController.swift */; };
+		7E9101B622897F4900290E7F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9101B522897F4900290E7F /* Message.swift */; };
+		7E9101B82289841B00290E7F /* ChatLogViewController+MessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9101B72289841B00290E7F /* ChatLogViewController+MessageHelper.swift */; };
+		7E9101BC2289938A00290E7F /* ChatMsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9101BB2289938A00290E7F /* ChatMsgTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		7E45DFA6228304C0009E58C7 /* ChatClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E45DFA9228304C0009E58C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7E45DFAB228304C0009E58C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7E45DFAE228304C0009E58C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E45DFB0228304C2009E58C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E45DFB3228304C2009E58C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		7E45DFC5228304C2009E58C7 /* ChatCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E45DFC9228304C2009E58C7 /* ChatCloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCloneUITests.swift; sourceTree = "<group>"; };
 		7E45DFCB228304C2009E58C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E9101B222897E0A00290E7F /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
+		7E9101B522897F4900290E7F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		7E9101B72289841B00290E7F /* ChatLogViewController+MessageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatLogViewController+MessageHelper.swift"; sourceTree = "<group>"; };
+		7E9101BB2289938A00290E7F /* ChatMsgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMsgTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,14 @@
 		7E45DFA8228304C0009E58C7 /* ChatClone */ = {
 			isa = PBXGroup;
 			children = (
+				7E9101BA2289935400290E7F /* Controllers */,
+				7E9101B92289933E00290E7F /* Views */,
+				7E9101B422897EFD00290E7F /* Model */,
 				7E45DFA9228304C0009E58C7 /* AppDelegate.swift */,
-				7E45DFAB228304C0009E58C7 /* ViewController.swift */,
-				7E45DFAD228304C0009E58C7 /* Main.storyboard */,
 				7E45DFB0228304C2009E58C7 /* Assets.xcassets */,
 				7E45DFB2228304C2009E58C7 /* LaunchScreen.storyboard */,
 				7E45DFB5228304C2009E58C7 /* Info.plist */,
+				7E9101B72289841B00290E7F /* ChatLogViewController+MessageHelper.swift */,
 			);
 			path = ChatClone;
 			sourceTree = "<group>";
@@ -123,6 +131,31 @@
 				7E45DFCB228304C2009E58C7 /* Info.plist */,
 			);
 			path = ChatCloneUITests;
+			sourceTree = "<group>";
+		};
+		7E9101B422897EFD00290E7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E9101B522897F4900290E7F /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7E9101B92289933E00290E7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E45DFAD228304C0009E58C7 /* Main.storyboard */,
+				7E9101BB2289938A00290E7F /* ChatMsgTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E9101BA2289935400290E7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E9101B222897E0A00290E7F /* ChatLogViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E45DFAC228304C0009E58C7 /* ViewController.swift in Sources */,
+				7E9101B622897F4900290E7F /* Message.swift in Sources */,
+				7E9101B82289841B00290E7F /* ChatLogViewController+MessageHelper.swift in Sources */,
+				7E9101B322897E0A00290E7F /* ChatLogViewController.swift in Sources */,
 				7E45DFAA228304C0009E58C7 /* AppDelegate.swift in Sources */,
+				7E9101BC2289938A00290E7F /* ChatMsgTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,8 +469,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ZAXR9W7Z2;
+				DEVELOPMENT_TEAM = HN55VQ5D69;
 				INFOPLIST_FILE = ChatClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,8 +488,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ZAXR9W7Z2;
+				DEVELOPMENT_TEAM = HN55VQ5D69;
 				INFOPLIST_FILE = ChatClone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
