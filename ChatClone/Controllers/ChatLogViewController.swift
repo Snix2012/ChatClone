@@ -152,17 +152,17 @@ extension ChatLogViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let messageText = messagesArray[indexPath.row]?.msgText {
-            let size = CGSize(width: 250, height: 1200)
+            let size = CGSize(width: 250, height: 1000)
             let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
             
             print("\n")
-            print(estimatedFrame.height + 50)
+            print(estimatedFrame.height + 40)
             
-            return CGFloat(estimatedFrame.height + 50)
+            return CGFloat(estimatedFrame.height + 40)
         }
         
-        return CGFloat(200)
+        return CGFloat(100)
     }
     
     func dateToString(date:(Date))-> String {
