@@ -98,11 +98,13 @@ class ChatMsgTableViewCell: UITableViewCell {
     
     
    func setupViews() {
-    
+
 
         addSubview(textBubbleView)
         addSubview(messageTextView)
 
+        textBubbleView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        textBubbleView.layer.borderWidth = 2
         
         textBubbleView.addSubview(bubbleImageView)
        // bubbleImageView.leadingAnchor.constraint(equalTo:textBubbleView.leadingAnchor, constant: 10).isActive = true

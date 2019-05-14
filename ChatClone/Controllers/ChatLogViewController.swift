@@ -16,6 +16,14 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var chatLogTableView: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        chatLogTableView.backgroundView?.backgroundColor = UIColor.clear
+        chatLogTableView.backgroundColor = UIColor.clear
+        
+        let backgroundImage = UIImage(named: "Background")
+        let imageView = UIImageView(image: backgroundImage)
+        self.chatLogTableView.backgroundView = imageView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,9 +118,12 @@ extension ChatLogViewController {
         return messagesArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ChatMsgTableViewCell = self.chatLogTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ChatMsgTableViewCell
 
+        cell.backgroundView?.backgroundColor = UIColor.blue
+        cell.contentView.backgroundColor = UIColor.clear
+        
         let theMessgage = self.messagesArray[indexPath.row]
         cell.messageTextView.text = self.messagesArray[indexPath.row]?.msgText
         cell.nameLabel.text = self.messagesArray[indexPath.row]?.msgFrom
@@ -124,9 +135,9 @@ extension ChatLogViewController {
         
         //incoming admin message
         if theMessgage?.isFromBackend == true {
-            cell.messageTextView.frame = CGRect(x: 48 + 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
+            cell.messageTextView.frame = CGRect(x: 48 + 10, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             
-            cell.textBubbleView.frame = CGRect(x: 48 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
+            cell.textBubbleView.frame = CGRect(x: 48 - 12, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
             
             cell.textBubbleView.backgroundColor = UIColor(white: 0.95, alpha: 1)
             cell.bubbleImageView.image = ChatMsgTableViewCell.adminBubbleImage
@@ -164,6 +175,7 @@ extension ChatLogViewController {
         
         return CGFloat(100)
     }
+    
     
     func dateToString(date:(Date))-> String {
         let dateformatter = DateFormatter()
