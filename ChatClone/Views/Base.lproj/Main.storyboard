@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hmP-fT-sgh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hmP-fT-sgh">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -106,6 +106,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chat Log" id="Cad-fg-afV">
+                        <barButtonItem key="leftBarButtonItem" title="Slidy" id="m8n-1P-9za">
+                            <connections>
+                                <action selector="showSlidyView:" destination="BYZ-38-t0r" id="oVL-lh-OFT"/>
+                                <segue destination="PeE-H0-jVc" kind="show" id="r9l-9W-wy7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Simulate Typing" id="VyZ-o8-p80">
                             <connections>
                                 <action selector="adminIsTyping:" destination="BYZ-38-t0r" id="Shu-Js-g1L"/>
@@ -123,6 +129,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+        </scene>
+        <!--Slidy View Controller-->
+        <scene sceneID="ip4-14-cJM">
+            <objects>
+                <viewController id="PeE-H0-jVc" customClass="SlidyViewController" customModule="ChatClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3la-yc-d1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="TCe-az-UTm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OFo-xN-i5d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F06-4e-4U7">
+                                <rect key="frame" x="0.0" y="237" width="514" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3b-DU-h2K">
+                                        <rect key="frame" x="523.5" y="54" width="40.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40.5" id="98L-Kn-eiq"/>
+                                            <constraint firstAttribute="height" constant="20" id="v9m-O0-h4D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.5450980392" green="0.4549019608" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="m3b-DU-h2K" secondAttribute="trailing" constant="-50" id="041-Im-8Fh"/>
+                                    <constraint firstItem="m3b-DU-h2K" firstAttribute="top" secondItem="F06-4e-4U7" secondAttribute="top" constant="54" id="MVz-z7-m6Z"/>
+                                    <constraint firstItem="m3b-DU-h2K" firstAttribute="centerY" secondItem="F06-4e-4U7" secondAttribute="centerY" id="b2N-tK-eHE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F06-4e-4U7" firstAttribute="leading" secondItem="OFo-xN-i5d" secondAttribute="leading" id="Nzi-2r-eK4"/>
+                            <constraint firstItem="TCe-az-UTm" firstAttribute="top" secondItem="F06-4e-4U7" secondAttribute="bottom" constant="497" id="bCE-bz-aES"/>
+                            <constraint firstItem="F06-4e-4U7" firstAttribute="top" secondItem="3la-yc-d1h" secondAttribute="bottom" constant="149" id="fb6-Fe-5zz"/>
+                            <constraint firstAttribute="trailing" secondItem="F06-4e-4U7" secondAttribute="trailing" constant="-100" id="rJr-Yy-DcA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eo0-Ds-w0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737.68115942029" y="136.60714285714286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rqs-18-azR">

@@ -10,6 +10,7 @@ import UIKit
 
 class ChatLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var showSlidyViewController: UIBarButtonItem!
     // MARK: - Properties
     private let cellId = "ChatCell"
     
@@ -97,11 +98,18 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Keyboard Logic
     @objc func keyboardWillShow(notification: NSNotification) {
         print("\n Will show notification")
+//        if let keyboardSize =  (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+//        }
         adjustHeightforkeyboard(showing:true, notification: notification)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         print("\n Will Hide notification")
+//        if let keyboardSize =  (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        }
+    
         adjustHeightforkeyboard(showing:false, notification: notification)
     }
     
@@ -122,7 +130,10 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
             self.view.setNeedsLayout()
         }, completion: { (completed) in
             if(showing) {
-                self.scrollToBottomMessage()
+                 self.chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0)
+               self.scrollToBottomMessage()
+            } else {
+                self.chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             }
         })
     }

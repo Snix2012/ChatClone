@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CCE4A3D228CBE54001AA7D0 /* SlidyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCE4A3C228CBE54001AA7D0 /* SlidyViewController.swift */; };
 		7E45DFAA228304C0009E58C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45DFA9228304C0009E58C7 /* AppDelegate.swift */; };
 		7E45DFAF228304C0009E58C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E45DFAD228304C0009E58C7 /* Main.storyboard */; };
 		7E45DFB1228304C2009E58C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E45DFB0228304C2009E58C7 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CCE4A3C228CBE54001AA7D0 /* SlidyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidyViewController.swift; sourceTree = "<group>"; };
 		7E45DFA6228304C0009E58C7 /* ChatClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E45DFA9228304C0009E58C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E45DFAE228304C0009E58C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				7E9101B222897E0A00290E7F /* ChatLogViewController.swift */,
+				3CCE4A3C228CBE54001AA7D0 /* SlidyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CCE4A3D228CBE54001AA7D0 /* SlidyViewController.swift in Sources */,
 				7E9101B622897F4900290E7F /* Message.swift in Sources */,
 				7E9101B82289841B00290E7F /* ChatLogViewController+MessageHelper.swift in Sources */,
 				7E9101B322897E0A00290E7F /* ChatLogViewController.swift in Sources */,
@@ -471,14 +475,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HN55VQ5D69;
 				INFOPLIST_FILE = ChatClone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.ChatClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -490,14 +494,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HN55VQ5D69;
 				INFOPLIST_FILE = ChatClone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.ChatClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
