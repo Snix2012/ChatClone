@@ -10,11 +10,28 @@ import UIKit
 
 class ChatLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // MARK: - Properties
     private let cellId = "ChatCell"
     
     var messagesArray = [Message?]()
 
+    @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var adminTypingBtn: UIBarButtonItem!
     @IBOutlet weak var chatLogTableView: UITableView!
+    @IBOutlet weak var sendMessageInputView: UITextField!
+    
+    lazy var sendButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Send", for: .normal)
+        let titleColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+        button.setTitleColor(titleColor, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        //  button.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+        return button
+    }()
+    
+  
+    // MARK: -  Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         chatLogTableView.backgroundView?.backgroundColor = UIColor.clear
@@ -24,32 +41,116 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         let imageView = UIImageView(image: backgroundImage)
         self.chatLogTableView.backgroundView = imageView
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chatLogTableView.estimatedRowHeight = 150.0
-        chatLogTableView.rowHeight = UITableView.automaticDimension
-
         createMessages()
         
         for msg in messagesArray {
             debugPrint(msg!)
         }
         
+        self.sendMessageInputView.delegate = self
+        
+        chatLogTableView.estimatedRowHeight = 150.0
+        chatLogTableView.rowHeight = UITableView.automaticDimension
         self.chatLogTableView.register(ChatMsgTableViewCell.self, forCellReuseIdentifier:cellId)
+        chatLogTableView.backgroundView = UIImageView.init(image: UIImage(named: "Background"))
+        
+        keyboardNotificationsSetup()
+        
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = true
+        view.addGestureRecognizer(tap)
+        
+        scrollToBottomMessage()
     }
     
-    /*
-     msgTo: String?
-     msgFrom: String?
-     msgDate: NSDate?
-     msgText: String?
-     isFromBackend: Bool?
-     */
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+    }
+    
+    private func keyboardNotificationsSetup() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil);
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil);
+    }
+    
+    
+    
+    // MARK: - Keyboard Logic
+    @objc func keyboardWillShow(notification: NSNotification) {
+        print("\n Will show notification")
+        self.scrollToBottomMessage()
+        
+        adjustHeightforkeyboard(showing:true, notification: notification)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        print("\n Will Hide notification")
+        adjustHeightforkeyboard(showing:false, notification: notification)
+    }
+    
+    private func adjustHeightforkeyboard(showing:Bool, notification: NSNotification) {
+        
+        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        print(keyboardFrame)
+        
+        guard let animationDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval) else { return }
+        
+        guard let animationCurve = (notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt) else { return }
+        
+        let changedHeight = keyboardFrame.height * (showing ? 1 : -1)
+        print(changedHeight)
+        
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: {
+            self.inputBottomConstraint.constant += changedHeight
+            self.view.setNeedsLayout()
+        }, completion: { (completed) in
+            if(showing) {
+                self.scrollToBottomMessage()
+            }
+        })
+    }
+    
+    // MARK: - UI Logic
+    
+    // Dismiss keyboard if container view is tapped
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // Scroll to bottom of messages
+    func scrollToBottomMessage() {
+        if self.messagesArray.count == 0 { return }
+        let indexPath = IndexPath(row: self.messagesArray.count-1, section: 0)
+        self.chatLogTableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+    }
+    
+    // MARK: - Simulate typing
+    
+    @IBAction func adminIsTyping(_ sender: Any) {
+        
+        print("\n Do admin typing amination")
+        
+        let adminTypingMsg = Message(to:"Fred", from:"Admin", text:"        ", sentOn:generateRandomDate(daysBack: 5)!, isBackend: true)
+        messagesArray.append(adminTypingMsg)
+        
+        self.chatLogTableView.reloadData()
+        scrollToBottomMessage()
+    }
+    
     
     private func createMessages() {
-
+        
         let msg1 = Message(to:"Fred", from:"Admin", text:"Good morning..", sentOn:generateRandomDate(daysBack: 5)!, isBackend:true)
         messagesArray.append(msg1)
         
@@ -58,16 +159,16 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let msg3 = Message(to:"Admin", from:"Fred", text:"Hello, yes I'm doing fine today", sentOn:generateRandomDate(daysBack: 5)!, isBackend:false)
         messagesArray.append(msg3)
-
+        
         let msg4 = Message(to:"Fred", from:"Admin", text:"We just wanted to get in touch to inform you of a new, great, unbelievable, supperduper great offer coming your way next week.  would you like to hear more and sign up?", sentOn:generateRandomDate(daysBack: 5)!, isBackend:true)
         messagesArray.append(msg4)
-
+        
         let msg5 = Message(to:"Admin", from:"Fred", text:"What's the offer?", sentOn:generateRandomDate(daysBack: 5)!, isBackend:false)
         messagesArray.append(msg5)
         
         let msg6 = Message(to:"Fred", from:"Admin", text:"We are giving the first 100 people to sign up a £10 free bet and a chance to enter the prize draw to win your own race horse", sentOn:generateRandomDate(daysBack: 5)!, isBackend:true)
         messagesArray.append(msg6)
-
+        
         let msg7 = Message(to:"Admin", from:"Fred", text:"I live on the 10th floor of a flat, so a horse wouldn't be much use to me!", sentOn:generateRandomDate(daysBack: 5)!, isBackend:false)
         messagesArray.append(msg7)
         
@@ -76,12 +177,12 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let msg9 = Message(to:"Admin", from:"Fred", text:"Phew!  I wouldn't have liked trying to get a horse in a lift everyday. How do I sign up? ", sentOn:generateRandomDate(daysBack: 5)!, isBackend:false)
         messagesArray.append(msg9)
-
+        
         let msg10 = Message(to:"Fred", from:"Admin", text:"Just credit your account with £50 and your all set", sentOn:generateRandomDate(daysBack: 5)!, isBackend:true)
         messagesArray.append(msg10)
         
     }
-  
+    
     
     private func generateRandomDate(daysBack: Int)-> Date?{
         let day = arc4random_uniform(UInt32(daysBack))+1
@@ -98,19 +199,21 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         let randomDate = gregorian?.date(byAdding: offsetComponents, to: today, options: .init(rawValue: 0) )
         return randomDate
     }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+    
+    // MARK: - UITextField Delegate
+    
+extension ChatLogViewController: UITextFieldDelegate {
+        
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.text = ""
+        view.endEditing(true)
+        return false
+    }
+}
+
 
 extension ChatLogViewController {
 
