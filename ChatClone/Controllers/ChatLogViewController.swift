@@ -139,10 +139,9 @@ extension ChatLogViewController {
             
             cell.textBubbleView.frame = CGRect(x: 48 - 12, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
             
-            cell.textBubbleView.backgroundColor = UIColor(white: 0.95, alpha: 1)
             cell.bubbleImageView.image = ChatMsgTableViewCell.adminBubbleImage
-            cell.bubbleImageView.tintColor = UIColor(white: 0.95, alpha: 1)
-            cell.messageTextView.textColor = UIColor.black
+            //cell.bubbleImageView.tintColor = UIColor(white: 0.95, alpha: 1)
+            cell.bubbleImageView.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             
         } else {
             
@@ -152,10 +151,9 @@ extension ChatLogViewController {
             
             cell.textBubbleView.frame = CGRect(x:view.frame.width - estimatedFrame.width - 16 - 8 - 30, y: 0, width:estimatedFrame.width + 16 + 8 + 10, height:estimatedFrame.height + 20 + 6)
             
-            cell.textBubbleView.backgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+            //cell.textBubbleView.backgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
             cell.bubbleImageView.image = ChatMsgTableViewCell.userBubbleImage
-            cell.bubbleImageView.tintColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
-            cell.messageTextView.textColor = UIColor.white
+            cell.bubbleImageView.tintColor = UIColor(red: 253/255, green: 231/255, blue: 51/255, alpha: 1)
         }
         
         return cell;

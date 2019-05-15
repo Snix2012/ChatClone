@@ -25,6 +25,7 @@ class ChatMsgTableViewCell: UITableViewCell {
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.text = "Sample message"
         textView.backgroundColor = UIColor.clear
+        textView.textColor = UIColor.black
         return textView
     }()
     
@@ -65,7 +66,7 @@ class ChatMsgTableViewCell: UITableViewCell {
     
     let textBubbleView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.95, alpha: 1)
+       // view.backgroundColor = UIColor(white: 0.95, alpha: 1)
         view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
@@ -79,6 +80,7 @@ class ChatMsgTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = ChatMsgTableViewCell.adminBubbleImage
         imageView.tintColor = UIColor(white: 0.90, alpha: 1)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
@@ -86,9 +88,7 @@ class ChatMsgTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-       // contentView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        
+
         setupViews()
     }
     
@@ -99,18 +99,17 @@ class ChatMsgTableViewCell: UITableViewCell {
     
    func setupViews() {
 
-
         addSubview(textBubbleView)
         addSubview(messageTextView)
 
-        textBubbleView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        textBubbleView.layer.borderWidth = 2
-        
+//        textBubbleView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//        textBubbleView.layer.borderWidth = 2
+    
         textBubbleView.addSubview(bubbleImageView)
-       // bubbleImageView.leadingAnchor.constraint(equalTo:textBubbleView.leadingAnchor, constant: 10).isActive = true
+        bubbleImageView.leadingAnchor.constraint(equalTo:textBubbleView.leadingAnchor).isActive = true
         bubbleImageView.topAnchor.constraint(equalTo: textBubbleView.topAnchor).isActive = true
         bubbleImageView.bottomAnchor.constraint(equalTo:textBubbleView.bottomAnchor).isActive = true
-       // bubbleImageView.trailingAnchor.constraint(equalTo: textBubbleView.trailingAnchor).isActive = true
+        bubbleImageView.trailingAnchor.constraint(equalTo: textBubbleView.trailingAnchor).isActive = true
     }
     
     
