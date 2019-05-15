@@ -36,15 +36,9 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: -  Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
-        chatLogTableView.backgroundView?.backgroundColor = UIColor.clear
         chatLogTableView.backgroundColor = UIColor.clear
-        
-        let backgroundImage = UIImage(named: "Background")
-        let imageView = UIImageView(image: backgroundImage)
-        
-        self.chatLogTableView.backgroundView = imageView
         emptyChatLogView.backgroundColor = UIColor.clear
-        
+        self.view.addBackgroundImage(imageName: "Background")
     }
 
     override func viewDidLoad() {
@@ -72,11 +66,11 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         chatLogTableView.estimatedRowHeight = 150.0
         chatLogTableView.rowHeight = UITableView.automaticDimension
         self.chatLogTableView.register(ChatMsgTableViewCell.self, forCellReuseIdentifier:cellId)
-        chatLogTableView.backgroundView = UIImageView.init(image: UIImage(named: "Background"))
+       // chatLogTableView.backgroundView = UIImageView.init(image: UIImage(named: "Background"))
         
         keyboardNotificationsSetup()
         
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = true
         view.addGestureRecognizer(tap)
         
@@ -85,7 +79,6 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: self.view.window)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
     }
     
@@ -104,8 +97,6 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Keyboard Logic
     @objc func keyboardWillShow(notification: NSNotification) {
         print("\n Will show notification")
-        self.scrollToBottomMessage()
-        
         adjustHeightforkeyboard(showing:true, notification: notification)
     }
     
@@ -150,9 +141,9 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         self.chatLogTableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
     }
     
-    // MARK: - Simulate typing
+// MARK: - Simulate typing
     
-    @IBAction func adminIsTyping(_ sender: Any) {
+@IBAction func adminIsTyping(_ sender: Any) {
         
         print("\n Do admin typing amination")
         
@@ -164,17 +155,18 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 }
     
-    // MARK: - UITextField Delegate
+// MARK: - UITextField Delegate
     
 extension ChatLogViewController: UITextFieldDelegate {
         
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.text = ""
-        view.endEditing(true)
-        return false
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.text = ""
+            view.endEditing(true)
+            return false
+        }
     }
-}
 
+ // MARK: - UITableview Delegate
 
 extension ChatLogViewController {
 
@@ -245,4 +237,20 @@ extension ChatLogViewController {
         return dateformatter.string(from: date)
     }
     
+}
+
+extension UIView {
+    
+    func addBackgroundImage(imageName:String) {
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        
+        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        imageViewBackground.image = UIImage(named: imageName)
+        
+        imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
+        
+        self.addSubview(imageViewBackground)
+        self.sendSubviewToBack(imageViewBackground)
+    }
 }
