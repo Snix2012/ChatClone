@@ -14,11 +14,13 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
     private let cellId = "ChatCell"
     
     var messagesArray = [Message?]()
+    var chatLogIsEmpty:Bool = true
 
     @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var adminTypingBtn: UIBarButtonItem!
     @IBOutlet weak var chatLogTableView: UITableView!
     @IBOutlet weak var sendMessageInputView: UITextField!
+    @IBOutlet weak var emptyChatLogView: UIView!
     
     lazy var sendButton: UIButton = {
         let button = UIButton(type: .system)
@@ -39,20 +41,32 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let backgroundImage = UIImage(named: "Background")
         let imageView = UIImageView(image: backgroundImage)
+        
         self.chatLogTableView.backgroundView = imageView
+        emptyChatLogView.backgroundColor = UIColor.clear
+        
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Dummy data setup
         createMessages()
-        
         for msg in messagesArray {
             debugPrint(msg!)
         }
         
+        // Check to see if we have any existing chats
+        if(messagesArray.count > 0) {
+            emptyChatLogView.isHidden = true
+            chatLogTableView.isHidden = false
+            chatLogIsEmpty = false
+        }else {
+            emptyChatLogView.isHidden = false
+            chatLogTableView.isHidden = true
+            chatLogIsEmpty = true
+        }
+
         self.sendMessageInputView.delegate = self
         
         chatLogTableView.estimatedRowHeight = 150.0
