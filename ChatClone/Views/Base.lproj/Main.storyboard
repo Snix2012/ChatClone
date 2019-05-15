@@ -172,6 +172,9 @@
                             <constraint firstAttribute="trailing" secondItem="F06-4e-4U7" secondAttribute="trailing" constant="-100" id="rJr-Yy-DcA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lableToSlideIn" destination="m3b-DU-h2K" id="5aZ-1t-dz9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eo0-Ds-w0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
