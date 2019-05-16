@@ -10,7 +10,7 @@ import UIKit
 
 class SlidyViewController: UIViewController {
 
-    @IBOutlet weak var lableToSlideIn: UILabel!
+    @IBOutlet weak var labelToSlideIn: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +31,16 @@ class SlidyViewController: UIViewController {
         
         if(sender.direction == .left) {
             print("swipe left")
-           let lableLeftSwipePosition = CGPoint(x: lableToSlideIn.frame.origin.x - 200, y: lableToSlideIn.frame.origin.y)
+           let labelLeftSwipePosition = CGPoint(x: labelToSlideIn.frame.origin.x - 200, y: labelToSlideIn.frame.origin.y)
             
-            lableToSlideIn.frame = CGRect(x: lableLeftSwipePosition.x, y: lableLeftSwipePosition.y, width: lableToSlideIn.frame.size.width, height: lableToSlideIn.frame.size.height)
+            labelToSlideIn.frame = CGRect(x: labelLeftSwipePosition.x, y: labelLeftSwipePosition.y, width: labelToSlideIn.frame.size.width, height: labelToSlideIn.frame.size.height)
         }
         
         if(sender.direction == .right) {
             print("swipe right")
-             let lableRightSwipePosition = CGPoint(x: lableToSlideIn.frame.origin.x + 200, y: lableToSlideIn.frame.origin.y)
+             let labelRightSwipePosition = CGPoint(x: labelToSlideIn.frame.origin.x + 200, y: labelToSlideIn.frame.origin.y)
             
-             lableToSlideIn.frame = CGRect(x: lableRightSwipePosition.x, y: lableRightSwipePosition.y, width: lableToSlideIn.frame.size.width, height: lableToSlideIn.frame.size.height)
+             labelToSlideIn.frame = CGRect(x: labelRightSwipePosition.x, y: labelRightSwipePosition.y, width: labelToSlideIn.frame.size.width, height: labelToSlideIn.frame.size.height)
         }
     }
    
