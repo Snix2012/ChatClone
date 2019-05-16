@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="809"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatCell" rowHeight="129" id="xKb-iS-ToQ" customClass="ChatMsgTableViewCell" customModule="ChatClone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatCell" rowHeight="129" id="xKb-iS-ToQ" customClass="ChatMsgTableViewCell" customModule="ChatClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="129"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xKb-iS-ToQ" id="fGI-Nr-u9o">
@@ -45,14 +45,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#daretoask" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTM-cZ-bef">
-                                        <rect key="frame" x="140" y="250" width="134" height="34"/>
+                                        <rect key="frame" x="140" y="341.5" width="134" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want a bet you can't find on the app?  Send us a message and we'll price it up for you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbP-ym-uoJ">
-                                        <rect key="frame" x="34" y="304" width="346" height="91"/>
+                                        <rect key="frame" x="34" y="395.5" width="346" height="91"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="91" id="GxG-vg-Npy"/>
@@ -64,10 +64,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="jTM-cZ-bef" firstAttribute="top" secondItem="AXZ-j0-xTZ" secondAttribute="top" constant="250" id="1Je-3B-Ww5"/>
                                     <constraint firstItem="pbP-ym-uoJ" firstAttribute="top" secondItem="jTM-cZ-bef" secondAttribute="bottom" constant="20" id="3Nb-MR-mmy"/>
                                     <constraint firstItem="pbP-ym-uoJ" firstAttribute="centerX" secondItem="jTM-cZ-bef" secondAttribute="centerX" id="3e2-uM-ZeP"/>
                                     <constraint firstItem="pbP-ym-uoJ" firstAttribute="leading" secondItem="AXZ-j0-xTZ" secondAttribute="leading" constant="34" id="Slg-6Q-CpU"/>
+                                    <constraint firstItem="jTM-cZ-bef" firstAttribute="centerY" secondItem="AXZ-j0-xTZ" secondAttribute="centerY" multiplier="0.8" id="kKL-aE-UZc"/>
                                     <constraint firstItem="jTM-cZ-bef" firstAttribute="centerX" secondItem="AXZ-j0-xTZ" secondAttribute="centerX" id="zVZ-aj-fmq"/>
                                 </constraints>
                             </view>
