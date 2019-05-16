@@ -10,13 +10,13 @@ import UIKit
 
 class ChatLogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var showSlidyViewController: UIBarButtonItem!
     // MARK: - Properties
     private let cellId = "ChatCell"
     
     var messagesArray = [Message?]()
     var chatLogIsEmpty:Bool = true
 
+    @IBOutlet weak var showSlidyViewController: UIBarButtonItem!
     @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var adminTypingBtn: UIBarButtonItem!
     @IBOutlet weak var chatLogTableView: UITableView!
@@ -56,6 +56,7 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
             emptyChatLogView.isHidden = true
             chatLogTableView.isHidden = false
             chatLogIsEmpty = false
+            scrollToBottomMessage()
         }else {
             emptyChatLogView.isHidden = false
             chatLogTableView.isHidden = true
@@ -67,15 +68,12 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         chatLogTableView.estimatedRowHeight = 150.0
         chatLogTableView.rowHeight = UITableView.automaticDimension
         self.chatLogTableView.register(ChatMsgTableViewCell.self, forCellReuseIdentifier:cellId)
-       // chatLogTableView.backgroundView = UIImageView.init(image: UIImage(named: "Background"))
         
         keyboardNotificationsSetup()
         
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = true
         view.addGestureRecognizer(tap)
-        
-        scrollToBottomMessage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -92,24 +90,16 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil);
     }
-    
-    
+ 
     
     // MARK: - Keyboard Logic
     @objc func keyboardWillShow(notification: NSNotification) {
         print("\n Will show notification")
-//        if let keyboardSize =  (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-//        }
         adjustHeightforkeyboard(showing:true, notification: notification)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         print("\n Will Hide notification")
-//        if let keyboardSize =  (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        }
-    
         adjustHeightforkeyboard(showing:false, notification: notification)
     }
     
@@ -130,11 +120,11 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
             self.view.setNeedsLayout()
         }, completion: { (completed) in
             if(showing) {
-                 self.chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0)
-               self.scrollToBottomMessage()
+                 self.chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height - 10, right: 0)
             } else {
-                self.chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                self.chatLogTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -20, right: 0)
             }
+            self.scrollToBottomMessage()
         })
     }
     
@@ -207,24 +197,22 @@ extension ChatLogViewController {
             cell.textBubbleView.frame = CGRect(x: 48 - 12, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
             
             cell.bubbleImageView.image = ChatMsgTableViewCell.adminBubbleImage
-            //cell.bubbleImageView.tintColor = UIColor(white: 0.95, alpha: 1)
-            cell.bubbleImageView.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            
-        } else {
-            
-            //outgoing sending message
-            
+            cell.bubbleImageView.tintColor = UIColor(white: 0.99, alpha: 1)
+        }
+        //outgoing sending message
+        else {
             cell.messageTextView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 16 - 16 - 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             
             cell.textBubbleView.frame = CGRect(x:view.frame.width - estimatedFrame.width - 16 - 8 - 30, y: 0, width:estimatedFrame.width + 16 + 8 + 10, height:estimatedFrame.height + 20 + 6)
-            
-            //cell.textBubbleView.backgroundColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+  
             cell.bubbleImageView.image = ChatMsgTableViewCell.userBubbleImage
+            
+            // Fitzdares yellow
             cell.bubbleImageView.tintColor = UIColor(red: 253/255, green: 231/255, blue: 51/255, alpha: 1)
         }
-        
         return cell;
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let messageText = messagesArray[indexPath.row]?.msgText {
