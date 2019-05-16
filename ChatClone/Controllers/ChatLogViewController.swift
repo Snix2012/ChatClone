@@ -15,6 +15,7 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var messagesArray = [Message?]()
     var chatLogIsEmpty:Bool = true
+    var isAdminTyping:Bool = false
 
     @IBOutlet weak var showSlidyViewController: UIBarButtonItem!
     @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
@@ -48,8 +49,11 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dummy data setup
         createMessages()
         for msg in messagesArray {
-            debugPrint(msg!)
+            print(msg!)
         }
+        
+       sortChatsByTime()
+        
         
         // Check to see if we have any existing chats
         if(messagesArray.count > 0) {
@@ -70,10 +74,7 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
         self.chatLogTableView.register(ChatMsgTableViewCell.self, forCellReuseIdentifier:cellId)
         
         keyboardNotificationsSetup()
-        
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = true
-        view.addGestureRecognizer(tap)
+        gesturesSetup()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,6 +92,37 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
                                                object: nil);
     }
  
+    
+    private func gesturesSetup() {
+        
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = true
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+        rightSwipe.direction = .right
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+        leftSwipe.direction = .left
+       
+        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+    }
+    
+    // MARK: - Swipe to show msg send times
+    @objc func handleSwipes(sender:UISwipeGestureRecognizer) {
+        
+        if(sender.direction == .left) {
+            print("swipe left")
+            
+        }
+        
+        if(sender.direction == .right) {
+            print("swipe right")
+           
+        }
+    }
+
     
     // MARK: - Keyboard Logic
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -147,6 +179,8 @@ class ChatLogViewController: UIViewController, UITableViewDataSource, UITableVie
 @IBAction func adminIsTyping(_ sender: Any) {
         
         print("\n Do admin typing amination")
+    
+        self.isAdminTyping = true
         
         let adminTypingMsg = Message(to:"Fred", from:"Admin", text:"        ", sentOn:generateRandomDate(daysBack: 5)!, isBackend: true)
         messagesArray.append(adminTypingMsg)
@@ -176,6 +210,9 @@ extension ChatLogViewController {
     }
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        // Find out if last msg is from admin user typing
+    
         let cell:ChatMsgTableViewCell = self.chatLogTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ChatMsgTableViewCell
 
         cell.backgroundView?.backgroundColor = UIColor.blue
