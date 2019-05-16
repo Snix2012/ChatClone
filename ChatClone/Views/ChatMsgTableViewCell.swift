@@ -23,7 +23,6 @@ class ChatMsgTableViewCell: UITableViewCell {
     let messageTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 18)
-        textView.text = "Sample message"
         textView.backgroundColor = UIColor.clear
         textView.textColor = UIColor.black
         return textView
@@ -31,8 +30,9 @@ class ChatMsgTableViewCell: UITableViewCell {
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "12:05 pm"
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.text = "12:05"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor.black
         label.textAlignment = .right
         label.backgroundColor = UIColor.yellow
         return label
@@ -59,10 +59,17 @@ class ChatMsgTableViewCell: UITableViewCell {
                 }
                 timeLabel.text = dateFormatter.string(from: date as Date)
             }
-            
         }
     }
     
+    let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 15
+        imageView.layer.masksToBounds = true
+        imageView.image = UIImage(named: "icon-fitzdares");
+        return imageView
+    }()
     
     let textBubbleView: UIView = {
         let view = UIView()
@@ -84,14 +91,13 @@ class ChatMsgTableViewCell: UITableViewCell {
         return imageView
     }()
 
+    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = UIColor.clear
-        
-
         setupViews()
     }
     
@@ -113,17 +119,15 @@ class ChatMsgTableViewCell: UITableViewCell {
         bubbleImageView.topAnchor.constraint(equalTo: textBubbleView.topAnchor).isActive = true
         bubbleImageView.bottomAnchor.constraint(equalTo:textBubbleView.bottomAnchor).isActive = true
         bubbleImageView.trailingAnchor.constraint(equalTo: textBubbleView.trailingAnchor).isActive = true
+    
+    
+    
+//        addSubview(profileImageView)
+//        addConstraintsWithFormat(format: "H:|-8-[v0(30)]", views: profileImageView)
+//        addConstraintsWithFormat(format: "V:[v0(30)]|", views: profileImageView)
+//        profileImageView.backgroundColor = UIColor.red
     }
     
-    
-    
-    private func setupContainerView() {
-        let containerView = UIView()
-        addSubview(containerView)
-        
-        
-        
-    }
     
 //    func setupViews() {
 //        print("doing cell set up")
