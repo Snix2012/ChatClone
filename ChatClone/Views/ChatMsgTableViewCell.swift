@@ -65,9 +65,7 @@ class ChatMsgTableViewCell: UITableViewCell {
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 15
-        imageView.layer.masksToBounds = true
-        imageView.image = UIImage(named: "icon-fitzdares");
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -111,77 +109,17 @@ class ChatMsgTableViewCell: UITableViewCell {
         addSubview(textBubbleView)
         addSubview(messageTextView)
 
-//        textBubbleView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//        textBubbleView.layer.borderWidth = 2
-    
         textBubbleView.addSubview(bubbleImageView)
         bubbleImageView.leadingAnchor.constraint(equalTo:textBubbleView.leadingAnchor).isActive = true
         bubbleImageView.topAnchor.constraint(equalTo: textBubbleView.topAnchor).isActive = true
         bubbleImageView.bottomAnchor.constraint(equalTo:textBubbleView.bottomAnchor).isActive = true
         bubbleImageView.trailingAnchor.constraint(equalTo: textBubbleView.trailingAnchor).isActive = true
     
-    
-    
-//        addSubview(profileImageView)
-//        addConstraintsWithFormat(format: "H:|-8-[v0(30)]", views: profileImageView)
-//        addConstraintsWithFormat(format: "V:[v0(30)]|", views: profileImageView)
-//        profileImageView.backgroundColor = UIColor.red
+        addSubview(profileImageView)
+        profileImageView.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: textBubbleView.leftAnchor, constant: -5).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: textBubbleView.topAnchor, constant: -10).isActive = true
     }
     
-    
-//    func setupViews() {
-//        print("doing cell set up")
-//
-//        // Get the superview's layout
-//        let margins = self.layoutMarginsGuide
-//
-//        let containerView = UIView()
-//
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
-//        containerView.leadingAnchor.constraint(equalTo:margins.leadingAnchor, constant: 10).isActive = true
-//        containerView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-//        containerView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-//    // containerView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-//       // containerView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-//
-//        containerView.addSubview(nameLabel)
-//        containerView.addSubview(messageTextView)
-//        containerView.addSubview(timeLabel)
-//
-//
-//        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        messageTextView.translatesAutoresizingMaskIntoConstraints = false
-//        timeLabel.translatesAutoresizingMaskIntoConstraints = false
-//
-//        nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
-//        nameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
-//        nameLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//        nameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-//
-//        messageTextView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
-//        messageTextView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
-//      //  messageTextView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-//      //  messageTextView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//
-//        timeLabel.topAnchor.constraint(equalTo: messageTextView.bottomAnchor, constant: 0).isActive = true
-//        timeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
-//        timeLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-//        timeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-//
-//        addSubview(textBubbleView)
-//        textBubbleView.addSubview(containerView)
-//
-//        textBubbleView.translatesAutoresizingMaskIntoConstraints = false
-//        textBubbleView.leadingAnchor.constraint(equalTo:margins.leadingAnchor).isActive = true
-//        textBubbleView.trailingAnchor.constraint(equalTo:margins.trailingAnchor).isActive = true
-//        textBubbleView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-//        textBubbleView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-//
-//        textBubbleView.addSubview(bubbleImageView)
-//        bubbleImageView.translatesAutoresizingMaskIntoConstraints = false
-//        bubbleImageView.heightAnchor.constraint(equalToConstant: 45).isActive = true
-//        bubbleImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
-//
-//    }
-
 }

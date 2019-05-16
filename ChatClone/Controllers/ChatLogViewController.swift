@@ -192,23 +192,29 @@ extension ChatLogViewController {
         
         //incoming admin message
         if theMessgage?.isFromBackend == true {
-            cell.messageTextView.frame = CGRect(x: 48 + 10, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
+            cell.messageTextView.frame = CGRect(x: 58, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             
-            cell.textBubbleView.frame = CGRect(x: 48 - 12, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
+            cell.textBubbleView.frame = CGRect(x: 38, y: -4, width: estimatedFrame.width + 40, height: estimatedFrame.height + 26)
             
             cell.bubbleImageView.image = ChatMsgTableViewCell.adminBubbleImage
             cell.bubbleImageView.tintColor = UIColor(white: 0.99, alpha: 1)
+            
+            cell.profileImageView.image = UIImage(named: "icon-fitzdares")
+            cell.profileImageView.isHidden = false
+            
         }
         //outgoing sending message
         else {
-            cell.messageTextView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 16 - 16 - 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
-            
-            cell.textBubbleView.frame = CGRect(x:view.frame.width - estimatedFrame.width - 16 - 8 - 30, y: 0, width:estimatedFrame.width + 16 + 8 + 10, height:estimatedFrame.height + 20 + 6)
+            cell.messageTextView.frame = CGRect(x: view.frame.width - estimatedFrame.width - 42, y: 4, width: estimatedFrame.width + 14, height: estimatedFrame.height + 20)
+
+            cell.textBubbleView.frame = CGRect(x:view.frame.width - estimatedFrame.width - 54, y: 0, width:estimatedFrame.width + 40, height:estimatedFrame.height + 26)
   
             cell.bubbleImageView.image = ChatMsgTableViewCell.userBubbleImage
             
             // Fitzdares yellow
             cell.bubbleImageView.tintColor = UIColor(red: 253/255, green: 231/255, blue: 51/255, alpha: 1)
+            cell.profileImageView.isHidden = true
+           
         }
         return cell;
     }
@@ -219,8 +225,7 @@ extension ChatLogViewController {
             let size = CGSize(width: 250, height: 1000)
             let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
-            
-            print("\n")
+  
             print(estimatedFrame.height + 40)
             
             return CGFloat(estimatedFrame.height + 40)
