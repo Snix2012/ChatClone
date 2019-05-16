@@ -25,6 +25,7 @@ class ChatMsgTableViewCell: UITableViewCell {
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.backgroundColor = UIColor.clear
         textView.textColor = UIColor.black
+        textView.isUserInteractionEnabled = false
         return textView
     }()
     
@@ -89,12 +90,29 @@ class ChatMsgTableViewCell: UITableViewCell {
         return imageView
     }()
 
+    // MARK: - Typing indicator stuff
+    let typingIndicatorBubbleView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 15
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    let typingIndicatorImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 5
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.selectionStyle = .none
         self.backgroundColor = UIColor.clear
         setupViews()
     }
