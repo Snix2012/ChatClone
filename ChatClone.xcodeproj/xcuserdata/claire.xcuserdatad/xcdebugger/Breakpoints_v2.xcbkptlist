@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatClone/Controllers/ChatLogViewController.swift"
-            timestampString = "579630469.91513"
+            timestampString = "580407035.004164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
-            landmarkName = "adjustHeightforkeyboard(showing:notification:)"
-            landmarkType = "7">
+            landmarkName = "ChatLogViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatClone/Controllers/ChatLogViewController.swift"
-            timestampString = "579630469.915518"
+            timestampString = "580407035.004631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
             endingLineNumber = "119"
-            landmarkName = "adjustHeightforkeyboard(showing:notification:)"
+            landmarkName = "handleSwipes(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatClone/Controllers/ChatLogViewController.swift"
-            timestampString = "579630469.915575"
+            timestampString = "580407035.004872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "keyboardWillHide(notification:)"
+            landmarkName = "gesturesSetup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatClone/Controllers/ChatLogViewController.swift"
-            timestampString = "579630469.9156311"
+            timestampString = "580407035.0051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "keyboardWillShow(notification:)"
+            landmarkName = "gesturesSetup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatClone/Controllers/ChatLogViewController.swift"
-            timestampString = "579630469.915688"
+            timestampString = "580407035.005318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "adjustHeightforkeyboard(showing:notification:)"
+            landmarkName = "handleSwipes(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatClone/Controllers/ChatLogViewController.swift"
-            timestampString = "579630469.915771"
+            timestampString = "580407035.005536"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "165"
             endingLineNumber = "165"
-            landmarkName = "textFieldShouldReturn(_:)"
-            landmarkType = "7">
+            landmarkName = "ChatLogViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatClone/Controllers/ChatLogViewController.swift"
-            timestampString = "579630469.915812"
+            timestampString = "580407035.005757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "dismissKeyboard()"
+            landmarkName = "keyboardWillHide(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
