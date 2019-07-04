@@ -143,7 +143,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F06-4e-4U7">
-                                <rect key="frame" x="0.0" y="237" width="514" height="128"/>
+                                <rect key="frame" x="0.0" y="670" width="514" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3b-DU-h2K">
                                         <rect key="frame" x="523.5" y="54" width="40.5" height="20"/>
@@ -166,8 +166,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="F06-4e-4U7" firstAttribute="leading" secondItem="OFo-xN-i5d" secondAttribute="leading" id="Nzi-2r-eK4"/>
-                            <constraint firstItem="TCe-az-UTm" firstAttribute="top" secondItem="F06-4e-4U7" secondAttribute="bottom" constant="497" id="bCE-bz-aES"/>
-                            <constraint firstItem="F06-4e-4U7" firstAttribute="top" secondItem="3la-yc-d1h" secondAttribute="bottom" constant="149" id="fb6-Fe-5zz"/>
+                            <constraint firstItem="TCe-az-UTm" firstAttribute="top" secondItem="F06-4e-4U7" secondAttribute="bottom" constant="64" id="bCE-bz-aES"/>
+                            <constraint firstItem="F06-4e-4U7" firstAttribute="top" secondItem="3la-yc-d1h" secondAttribute="bottom" constant="582" id="fb6-Fe-5zz"/>
                             <constraint firstAttribute="trailing" secondItem="F06-4e-4U7" secondAttribute="trailing" constant="-100" id="rJr-Yy-DcA"/>
                         </constraints>
                     </view>

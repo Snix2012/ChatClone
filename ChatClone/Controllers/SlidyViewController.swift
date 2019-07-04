@@ -31,12 +31,12 @@ class SlidyViewController: UIViewController {
         view.addGestureRecognizer(rightSwipe)
         
 //        drawSquare()
-         drawCircle()
+ //        drawCircle()
 //        drawSpeachBubble()
 //
         
-        drawAdminSpeachBubble()
-        drawUserSpeachBubble()
+      //  drawAdminSpeachBubble()
+      //  drawUserSpeachBubble()
         
         
         //Example usage:
@@ -93,8 +93,8 @@ class SlidyViewController: UIViewController {
     
     fileprivate func drawSpeachBubble() {
         
-        let ovalPath = UIBezierPath.init(ovalIn: CGRect(x:40, y:100, width:150, height:100))
-        UIGraphicsBeginImageContext(CGSize(width: 250, height: 200));
+        let ovalPath = UIBezierPath.init(ovalIn: CGRect(x:250, y:100, width:150, height:150))
+        UIGraphicsBeginImageContext(CGSize(width: 300, height: 300));
         
         //this gets the graphic context
         let context = UIGraphicsGetCurrentContext()
@@ -218,21 +218,20 @@ class SlidyViewController: UIViewController {
     
     fileprivate func drawCircle() {
         let theArrow = CAShapeLayer()
+        theArrow.path = arrow(from: CGPoint(x: 110, y: 140), to: CGPoint(x: 110, y: 140),
+                              tailWidth: 1, headWidth: 10, headLength: 8)
         
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 212, height: 212))
+        self.view.layer.addSublayer(theArrow)
+        
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 200, height: 200))
         let img = renderer.image { ctx in
-            ctx.cgContext.setFillColor(UIColor.red.cgColor)
-            ctx.cgContext.setStrokeColor(UIColor.green.cgColor)
-            ctx.cgContext.setLineWidth(10)
-            
-            let rectangle = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2 , width: 212, height: 212)
-            ctx.cgContext.addEllipse(in: rectangle)
-            ctx.cgContext.drawPath(using: .fillStroke)
-           
-//            theArrow.path = arrow(from: CGPoint(x: 220, y: 280), to: CGPoint(x: 220, y: 260),
-//                                  tailWidth: 2, headWidth: 12, headLength: 8)
+//            ctx.cgContext.setFillColor(UIColor.yellow.cgColor)
 //
-//            ctx.cgContext.addPath(theArrow.path!)
+//            let circle = CGRect(x: 100, y: 100 , width: 100, height: 100)
+//            ctx.cgContext.addEllipse(in: circle)
+//            ctx.cgContext.drawPath(using: .fillStroke)
+           
+            
 
         }
         self.view.addSubview(UIImageView.init(image: img))
